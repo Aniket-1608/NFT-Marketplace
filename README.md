@@ -54,13 +54,11 @@ $ npx hardhat node
 - Connect your metamask to local host network.
 
 
-### 5. Migrate Smart Contracts
+### 5. Deploy Smart Contracts
 ```
 In new terminal deploy the smart contract to localhost.
 
 $ npx hardhat run src/backend/scripts/deploy.js --network localhost
-
-Open a browser and go to 'localhost:3000' 
 
 ```
 ### 6. Run Tests
