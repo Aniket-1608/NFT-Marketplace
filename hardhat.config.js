@@ -1,11 +1,8 @@
 require("@nomicfoundation/hardhat-toolbox");
-// require('dotenv').config();
-// require("@nomiclabs/hardhat-ethers");
-// require("@nomiclabs/hardhat-etherscan");
-
-// const fs = require("fs")
-// const privateKey = fs.readFileSync(".secret").toString()
-// const projectId = "8fdeb94e26ae4282aeb1181b0666c344"
+require('dotenv').config();
+require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
+// const projectId = "API KEY"
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
@@ -15,17 +12,15 @@ module.exports = {
     hardhat: {
       chainId: 31337
     },
-    // defaultNetwork: "matic",
-    // networks: {
-    //   hardhat: {
-    //   },
-    //   polygon_mumbai: {
-    //     url: "https://rpc-mumbai.maticvigil.com",
-    //     accounts: [process.env.PRIVATE_KEY]
-    //   }
-    // Ethereum_mainnet: {
-    //   url: `https://mainnet.infura.io/v3/${projectId}`,
-    //   accounts: [privateKey]
+
+    // mumbai: {
+    //   url: `https://polygon-mumbai.g.alchemy.com/v2/${projectId}`,
+    //   accounts: [process.env.PRIVATE_KEY]
+    // }
+
+    // Polygon_mainnet: {
+    //   url: `https://eth-mainnet.g.alchemy.com/v2/${projectId}`,
+    //   accounts: [process.env.PRIVATE_KEY]
     // }
   },
   solidity: {

@@ -15,6 +15,9 @@
 - Install [Moralis]
 
 ## Setting Up
+
+#### Local Setup
+
 ### 1. Clone/Download the Repository
 Clone the project locally:
 
@@ -71,4 +74,30 @@ $ npx hardhat test
 
 $ npm run dev
 ```
+#### Deploying to Polygon
+
+1. Add the Mumbai Test Network to your metamask wallet using the folowing configuration and get some test Matic faucet:
+    Network Name: Mumbai Testnet
+    New RPC URL: https://polygon-mumbai.g.alchemy.com/v2/-(Your unique API key)
+    Chain ID: 80001
+    Currency Symbol: Matic
+
+2. Uncomment the mumbai configuration in hardhat.config.js and ypdate the projectId field with your API key from alchemy.com
+
+3. Deploy to marketplace contract to mumbai network:
+
+    $ npx hardhat run scripts/deploy.js --network mumbai
+
+4. Update the RPC endpoint in the index.js file
+
+    $ const provider = new ethers.providers.JsonRpcProvider("put rpc endpoint of your choice")
+
+5. Launch the frontend
+
+    $ npm run dev
+
+
+
+
+
 
