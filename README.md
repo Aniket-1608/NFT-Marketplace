@@ -1,38 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NFT Marketplace
 
-## Getting Started
+## Technology Stack & Tools
 
-First, run the development server:
+- Solidity (Writing Smart Contract)
+- Javascript (React & Testing)
+- [Ethers] (Blockchain Interaction)
+- [Hardhat] (Development Framework)
+- [Ipfs] (Metadata storage)
+- [React-routers] (Navigational components)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Requirements For Initial Setup
+- Install [NodeJS] 
+- Install [Hardhat]
+- Install [Moralis]
+
+## Setting Up
+### 1. Clone/Download the Repository
+Clone the project locally:
+
+```
+https://github.com/Aniket-1608/NFT-Marketplace.git
+
+```
+### 2. Install Dependencies:
+```
+create a Next.js app, change into the directory and install the dependencies: 
+
+$ npx create-next-app nft-marketplace
+
+$ cd nft-marketplace
+
+$ npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers web3modal @openzeppelin/contracts ipfs-http-client axios
+
+Install Tailwind dependencies:
+
+$ npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+
+```
+### 3. Boot up local development blockchain
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+$ npx hardhat node
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 4. Connect development blockchain accounts to Metamask
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Copy private key of the addresses and import to Metamask
+- Connect your metamask to local host network.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+### 5. Migrate Smart Contracts
+```
+In new terminal deploy the smart contract to localhost.
 
-To learn more about Next.js, take a look at the following resources:
+$ npx hardhat run src/backend/scripts/deploy.js --network localhost
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open a browser and go to 'localhost:3000' 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+### 6. Run Tests
+```
 
-## Deploy on Vercel
+$ npx hardhat test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 7. Launch Frontend
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+$ npm run dev
+```
+
