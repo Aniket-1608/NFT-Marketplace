@@ -33,21 +33,18 @@ $ npx create-next-app nft-marketplace
 
 $ cd nft-marketplace
 
-$ npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers web3modal @openzeppelin/contracts ipfs-http-client axios
+$ npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers web3modal @openzeppelin/contracts ipfs-http-client axios moralis
 
 Install Tailwind dependencies:
 
 $ npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 
-
 ```
 ### 3. Boot up local development blockchain
 ```
-
 $ npx hardhat node
 
 ```
-
 ### 4. Connect development blockchain accounts to Metamask
 
 - Copy private key of the addresses and import to Metamask
@@ -63,15 +60,14 @@ $ npx hardhat run src/backend/scripts/deploy.js --network localhost
 ```
 ### 6. Run Tests
 ```
-
 $ npx hardhat test
 ```
 
 ### 7. Launch Frontend
 ```
-
 $ npm run dev
 ```
+
 #### Deploying to Polygon
 
 1. Add the Mumbai Test Network to your metamask wallet using the folowing configuration and get some test Matic faucet:
@@ -84,19 +80,20 @@ $ npm run dev
 
     Currency Symbol: Matic
 
-2. Uncomment the mumbai configuration in hardhat.config.js and ypdate the projectId field with your API key from alchemy.com
+2. Uncomment the mumbai configuration in hardhat.config.js and update the projectId field with your API key from alchemy.com
 
-3. Deploy to marketplace contract to mumbai network:
-
+3. Deploy the marketplace contract to mumbai network:
+```
     $ npx hardhat run scripts/deploy.js --network mumbai
-
+```
 4. Update the RPC endpoint in the index.js file
-
+```
     $ const provider = new ethers.providers.JsonRpcProvider("put rpc endpoint of your choice")
-
+```
 5. Launch the frontend
-
+```
     $ npm run dev
+```
 
 
 
