@@ -77,9 +77,13 @@ $ npm run dev
 #### Deploying to Polygon
 
 1. Add the Mumbai Test Network to your metamask wallet using the folowing configuration and get some test Matic faucet:
+
     Network Name: Mumbai Testnet
-    New RPC URL: https://polygon-mumbai.g.alchemy.com/v2/-(Your unique API key)
+    
+    New RPC URL: https://polygon-mumbai.g.alchemy.com/v2/-(API key)
+
     Chain ID: 80001
+
     Currency Symbol: Matic
 
 2. Uncomment the mumbai configuration in hardhat.config.js and ypdate the projectId field with your API key from alchemy.com
