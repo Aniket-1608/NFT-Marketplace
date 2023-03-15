@@ -79,8 +79,8 @@ $ npm run dev
 1. Add the Mumbai Test Network to your metamask wallet using the folowing configuration and get some test Matic faucet:
 
     Network Name: Mumbai Testnet
-    
-    New RPC URL: https://polygon-mumbai.g.alchemy.com/v2/-(API key)
+
+    New RPC URL: https://polygon-mumbai.g.alchemy.com/v2/(API_key)
 
     Chain ID: 80001
 
