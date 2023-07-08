@@ -22,7 +22,7 @@
     "ethereum-waffle": "^4.0.10",
     "ethers": "^5.7.2",
     "hardhat": "^2.13.0",
-    "ipfs-http-client": "^55.0.0",
+    "ipfs-http-client": "^60.0.1",
     "moralis": "^2.14.3",
     "next": "13.2.3",
     "react": "18.2.0",
