@@ -8,7 +8,7 @@ import { createThirdwebClient } from "thirdweb";
 export default function useMarketPlace() {
     const { abi } = NFTMarketplaceABI;
     // const [nftData, setNftData] = useState({ name: '', image: '', description: '' });
-    const client = createThirdwebClient({ clientId: "1bdcd5f74bace6ad67f118cf2d62a7c7" });
+    const client = createThirdwebClient({ clientId: process.env.NEXT_PUBLIC_CLIENT_ID });
     const fetchMarketItem = async () => {
         try {
             if (!window.ethereum) {
@@ -25,7 +25,6 @@ export default function useMarketPlace() {
             }
 
             let items = [];
-            // const client = createThirdwebClient({ clientId: "1bdcd5f74bace6ad67f118cf2d62a7c7" });
             for (let i = 0; i < data.length; i++) {
                 // console.log(data[i]); // Print each element to inspect its structure
                 const tokenId = data[i][0];
@@ -107,7 +106,7 @@ export default function useMarketPlace() {
             }
 
             let items = [];
-            // const client = createThirdwebClient({ clientId: "1bdcd5f74bace6ad67f118cf2d62a7c7" });
+
             for (let i = 0; i < data.length; i++) {
                 // console.log(data[i]); // Print each element to inspect its structure
                 const tokenId = data[i][0];
@@ -186,7 +185,7 @@ export default function useMarketPlace() {
             }
 
             let items = [];
-            // const client = createThirdwebClient({ clientId: "1bdcd5f74bace6ad67f118cf2d62a7c7" });
+
             for (let i = 0; i < data.length; i++) {
                 // console.log(data[i]); // Print each element to inspect its structure
                 const tokenId = data[i][0];
