@@ -1,4 +1,4 @@
-# NFT Marketplace
+# Upgradable NFT Marketplace
 
 ## Technology Stack & Tools
 
@@ -13,7 +13,7 @@
 
 - Install [NodeJS]
 - Install [Hardhat]
-- Install [Moralis]
+- Install [Thirdweb]
 
 ## Setting Up
 
@@ -31,17 +31,12 @@ https://github.com/Aniket-1608/NFT-Marketplace.git
 ### 2. Install Dependencies:
 
 ```
-create a Next.js app, change into the directory and install the dependencies:
-
-$ npx create-next-app nft-marketplace
+Change into the directory and install the dependencies:
 
 $ cd nft-marketplace
 
-$ npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers web3modal @openzeppelin/contracts ipfs-http-client axios moralis
+$ npx install
 
-Install Tailwind dependencies:
-
-$ npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 
 ```
 
@@ -54,7 +49,7 @@ $ npx hardhat node
 
 ### 4. Connect development blockchain accounts to Metamask
 
-- Copy private key of the addresses and import to Metamask
+- Copy private key of the wallet address and import it to Metamask
 - Connect your metamask to local host network.
 
 ### 5. Deploy Smart Contracts
@@ -62,7 +57,7 @@ $ npx hardhat node
 ```
 In new terminal deploy the smart contract to localhost.
 
-$ npx hardhat run src/backend/scripts/deploy.js --network localhost
+$ npm run deploy
 
 ```
 
@@ -78,33 +73,27 @@ $ npx hardhat test
 $ npm run dev
 ```
 
-#### Deploying to Polygon
+#### Deploying to Sepolia
 
-1. Add the Mumbai Test Network to your metamask wallet using the folowing configuration and get some test Matic faucet:
+1. Add your Infura API key, Etherscan API key and Wallet private key to the hardhat.config file
 
-   Network Name: Mumbai Testnet
+   Network Name: Sepolia Testnet
 
-   New RPC URL: https://polygon-mumbai.g.alchemy.com/v2/(API_key)
+   New RPC URL: https://sepolia.infura.io/v3/${INFURA_API_KEY}
 
-   Chain ID: 80001
-
-   Currency Symbol: Matic
-
-2. Uncomment the mumbai configuration in hardhat.config.js and update the projectId field with your API key from alchemy.com
-
-3. Deploy the marketplace contract to mumbai network:
+2. Deploy the marketplace contract to Sepolia network:
 
 ```
-    $ npx hardhat run scripts/deploy.js --network mumbai
+    $ npx hardhat run scripts/deploy.js --network sepolia
 ```
 
-4. Update the RPC endpoint in the index.js file
+3. Verify the deployed marketplace contract to Sepolia network using the etherscan api key:
 
 ```
-    $ const provider = new ethers.providers.JsonRpcProvider("put rpc endpoint of your choice")
+    $ npx hardhat verify --network sepolia "DEPLOYED_CONTRACT_ADDRESS"
 ```
 
-5. Launch the frontend
+4. Launch the frontend
 
 ```
     $ npm run dev
