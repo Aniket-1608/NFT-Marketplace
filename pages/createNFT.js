@@ -26,14 +26,14 @@ export default function CreateItem() {
             return;
         }
         try {
-            console.log("Trying to upload image to IPFS");
+            // console.log("Trying to upload image to IPFS");
 
             // Fetch the file from the server using the imagePath URL
             const response = await axios.get(fileUrl, {
                 responseType: 'blob',
             });
 
-            console.log("Got the image from the server");
+            // console.log("Got the image from the server");
             const file = new File([response.data], 'upload', {
                 type: response.data.type,
             });
@@ -59,9 +59,9 @@ export default function CreateItem() {
             return;
         }
 
-        console.log("Fetching IPFS image url");
+        // console.log("Fetching IPFS image url");
         const imageurl = await uploadImageToIpfs();
-        console.log(imageurl);
+        // console.log(imageurl);
 
         if (!imageurl) {
             console.error('Failed to upload image to IPFS.');
@@ -77,7 +77,7 @@ export default function CreateItem() {
 
         try {
             // const client = createThirdwebClient({ clientId: "1bdcd5f74bace6ad67f118cf2d62a7c7", secretKey: "20o3N5Cq1zEDiF66lpmSomW_rRBXpsA4yYw4vDEuHxz05PjnF6VJCOPeXt7muCVR7MNKZSuW0R-pwj_KIrmBxg" });
-            console.log("Uploading metadata to IPFS");
+            // console.log("Uploading metadata to IPFS");
             // Upload the metadata to IPFS
             const tokenUri = await upload({
                 client,
@@ -101,7 +101,7 @@ export default function CreateItem() {
 
         try {
             const fileUrl = URL.createObjectURL(selectedFile);
-            console.log(fileUrl);
+            // console.log(fileUrl);
             setFileUrl(fileUrl);
         } catch (error) {
             console.error('File upload failed:', error);
@@ -133,21 +133,21 @@ export default function CreateItem() {
             /* next, create the item */
 
             const ethAmount = formInput.price;
-            console.log(ethAmount);
+            // console.log(ethAmount);
             const contract = new ethers.Contract(marketplaceAddress, abi, signer);
 
             const listingPrice = await contract.listingPrice();
             const weiAmount = parseUnits(listingPrice.toString(), "wei");
-            console.log(weiAmount);
+            // console.log(weiAmount);
 
             //upload metadat to ipfs
             const url = await uploadMetadataToIpfs();
-            console.log(url);
+            // console.log(url);
 
             const transaction = await contract.createToken(url, ethAmount, {
                 value: weiAmount
             });
-            console.log("Sent transaction to the network.");
+            // console.log("Sent transaction to the network.");
             await transaction.wait();
             console.log("Transaction is success.");
 

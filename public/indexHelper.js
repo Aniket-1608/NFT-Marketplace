@@ -4,12 +4,13 @@ import { marketplaceAddress } from "../config";
 import NFTMarketplaceABI from "../artifacts/contracts/UpgradeableMarketplace.sol/NFTMarketplaceUpgradeable.json";
 import { download } from "thirdweb/storage";
 import { createThirdwebClient } from "thirdweb";
+import { useCallback } from "react";
 
 export default function useMarketPlace() {
     const { abi } = NFTMarketplaceABI;
     // const [nftData, setNftData] = useState({ name: '', image: '', description: '' });
     const client = createThirdwebClient({ clientId: process.env.NEXT_PUBLIC_CLIENT_ID });
-    const fetchMarketItem = async () => {
+    const fetchMarketItem = useCallback(async () => {
         try {
             if (!window.ethereum) {
                 throw new Error('Ethereum provider not found');
@@ -34,7 +35,7 @@ export default function useMarketPlace() {
 
                 //fetch the token uri
                 const tokenUri = await contract.tokenURI(tokenId);
-                console.log("Fetching token uri from smart contract");
+                // console.log("Fetching token uri from smart contract");
 
                 let meta, nftName, nftImage, nftDescription;
                 if (!tokenUri.startsWith('ipfs')) {
@@ -62,7 +63,7 @@ export default function useMarketPlace() {
                         nftName = data.name;
                         nftImage = imageUrl;
                         nftDescription = data.description;
-                        console.log(nftName, nftImage, nftDescription);
+                        // console.log(nftName, nftImage, nftDescription);
 
                     } catch (error) {
                         console.error('Error loading file', error);
@@ -89,9 +90,9 @@ export default function useMarketPlace() {
             console.error('Error loading market items:', error);
             throw new Error('Error loading market items');
         }
-    };
+    }, [abi]);
 
-    const fetchItemsListed = async () => {
+    const fetchItemsListed = useCallback(async () => {
         try {
             if (!window.ethereum) {
                 throw new Error('Ethereum provider not found');
@@ -113,7 +114,7 @@ export default function useMarketPlace() {
                 let price = ethers.formatEther(data[i][1]);
 
                 const tokenUri = await contract.tokenURI(tokenId);
-                console.log("Fetching token uri from smart contract");
+                // console.log("Fetching token uri from smart contract");
 
                 let meta, nftName, nftImage, nftDescription;
                 if (!tokenUri.startsWith('ipfs')) {
@@ -141,7 +142,7 @@ export default function useMarketPlace() {
                         nftName = data.name;
                         nftImage = imageUrl;
                         nftDescription = data.description;
-                        console.log(nftName, nftImage, nftDescription);
+                        // console.log(nftName, nftImage, nftDescription);
 
                     } catch (error) {
                         console.error('Error loading file', error);
@@ -168,9 +169,9 @@ export default function useMarketPlace() {
             console.error('Error loading listed items:', error);
             throw new Error('Error loading listed items');
         }
-    };
+    }, [abi]);
 
-    const fetchMyNfts = async () => {
+    const fetchMyNfts = useCallback(async () => {
         try {
             if (!window.ethereum) {
                 throw new Error('Ethereum provider not found');
@@ -192,7 +193,7 @@ export default function useMarketPlace() {
                 let price = ethers.formatEther((data[i][1]));
 
                 const tokenUri = await contract.tokenURI(tokenId);
-                console.log("Fetching token uri from smart contract");
+                // console.log("Fetching token uri from smart contract");
 
                 let meta, nftName, nftImage, nftDescription;
                 if (!tokenUri.startsWith('ipfs')) {
@@ -220,7 +221,7 @@ export default function useMarketPlace() {
                         nftName = data.name;
                         nftImage = imageUrl;
                         nftDescription = data.description;
-                        console.log(nftName, nftImage, nftDescription);
+                        // console.log(nftName, nftImage, nftDescription);
 
                     } catch (error) {
                         console.error('Error loading file', error);
@@ -246,6 +247,7 @@ export default function useMarketPlace() {
             console.error('Error loading my NFTs:', error);
             throw new Error('Error loading my NFTs');
         }
-    };
+    }, [abi]);
+
     return { fetchMarketItem, fetchItemsListed, fetchMyNfts };
 }

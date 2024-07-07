@@ -2,7 +2,7 @@ import * as ethers from 'ethers';
 import { useEffect, useState } from 'react'
 import { marketplaceAddress } from '../config'
 import NFTMarketplaceABI from '../artifacts/contracts/UpgradeableMarketplace.sol/NFTMarketplaceUpgradeable.json'
-import useMarketPlace from './indexHelper';
+import useMarketPlace from '../public/indexHelper';
 import Image from 'next/image';
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
         };
 
         loadNFTs();
-    }, []);
+    }, [fetchMarketItem]);
 
     // Function to manually reload NFTs
     const handleReloadNFTs = async () => {
@@ -72,7 +72,7 @@ export default function Home() {
             const transaction = await contract.createMarketSale(nft.tokenId, {
                 value: price
             });
-            console.log("Transaction sent to the blockchain. Waiting for finalising...");
+            // console.log("Transaction sent to the blockchain. Waiting for finalising...");
             await transaction.wait();
             console.log("Transaction is success");
         } catch (error) {

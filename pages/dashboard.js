@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useMarketPlace from './indexHelper';
+import useMarketPlace from '../public/indexHelper';
 import Image from 'next/image';
 
 export default function CreatorDashboard() {
@@ -24,7 +24,7 @@ export default function CreatorDashboard() {
         };
 
         loadNFTs();
-    }, [])
+    }, [fetchItemsListed])
 
     if (loadingState === 'loaded' && !nfts.length) {
         return (

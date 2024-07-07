@@ -3,7 +3,7 @@ import { ethers, parseUnits } from 'ethers';
 import { useRouter } from 'next/router'
 import { marketplaceAddress } from '../config'
 import NFTMarketplaceABI from '../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
-import useMarketPlace from './indexHelper'
+import useMarketPlace from '../public/indexHelper'
 import Image from 'next/image';
 
 export default function MyAssets() {
@@ -28,7 +28,7 @@ export default function MyAssets() {
         };
 
         loadNFTs();
-    }, [])
+    }, [fetchMyNfts])
 
     async function listNFT(nft) {
         // this function will call the resellToken function from the contract and list the 
@@ -59,14 +59,14 @@ export default function MyAssets() {
 
             const listingPrice = await contract.listingPrice();
             const weiAmount = parseUnits(listingPrice.toString(), "wei");
-            console.log(weiAmount);
+            // console.log(weiAmount);
 
             console.log('Sending transaction to the blockchain...');
             const transaction = await contract.resellToken(nft.tokenId, price,
                 {
                     value: weiAmount
                 });
-            console.log("Transaction sent to the blockchain. Waiting for finalising...");
+            // console.log("Transaction sent to the blockchain. Waiting for finalising...");
             await transaction.wait();
             console.log("Transaction is success");
 
