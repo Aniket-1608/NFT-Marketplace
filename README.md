@@ -35,7 +35,7 @@ Change into the directory and install the dependencies:
 
 $ cd nft-marketplace
 
-$ npx install
+$ npm install
 
 
 ```
@@ -47,12 +47,7 @@ $ npx hardhat node
 
 ```
 
-### 4. Connect development blockchain accounts to Metamask
-
-- Copy private key of the wallet address and import it to Metamask
-- Connect your metamask to local host network.
-
-### 5. Deploy Smart Contracts
+### 4. Deploy Smart Contracts
 
 ```
 In new terminal deploy the smart contract to localhost.
@@ -61,13 +56,13 @@ $ npm run deploy
 
 ```
 
-### 6. Run Tests
+### 5. Run Tests
 
 ```
 $ npx hardhat test
 ```
 
-### 7. Launch Frontend
+### 6. Launch Frontend
 
 ```
 $ npm run dev
